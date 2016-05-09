@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>jQuery test</title>
+	<style type="text/css">
+		#menu{ width: 300px;}
+		.has_children{ background: #555;color: #fff;cursor: pointer;}
+		.highlight{ color: #faf;background: #aff;}
+		div{ padding: 0;margin: 10px 0;}
+		div a{ background:#ffa;display: none;float: left;width:300px;}
+	</style>
+	<script src="jquery-1.12.3.min.js"></script>
+	<script type="text/javascript">
+		$("document").ready(function(){ 
+			$(".has_children").click(function(){ 
+			$(this).addClass("highlight")            //给当前元素添加highlight类
+			.children("a").show().end()          //将子节点<a>的元素显示出来，
+												//并定位到上次操作的元素
+			.siblings().removeClass("highlight") //获取元素的兄弟节点，去除它们的highlight属性
+			.children("a").hide();               //将兄弟节点下的<a>隐藏
+		});
+
+	});
+	
+	</script>
+</head>
+<body>
+	<div id="menu">
+		<div class="has_children">
+			<span>1.我的简介</span>
+			<a href="">姓名</a>
+			<a href="">年龄</a>
+			<a href="">学校</a>
+			<a href="">专业</a>
+			<a href="">班级</a>
+		</div>
+		<div class="has_children">
+			<span>2.我的宿舍</span>
+			<a href="">一米五</a>
+			<a href="">黑胖子</a>
+			<a href="">大鼻孔</a>
+		</div>
+		<div class="has_children">
+			<span>3.我的班级</span>
+			<a href="">aaa</a>
+			<a href="">bbb</a>
+			<a href="">ccc</a>
+		</div>
+	</div>
+	
+</body>
+</html>
